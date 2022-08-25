@@ -4,7 +4,7 @@ public class Repository {
     public void save(Ticket newItem) {
         for (Ticket items: tickets){
             if (items.id == newItem.id){
-                throw new NotFoundException("a ticket with this " + newItem.id + " exists");
+                throw new NotFoundException("a ticket with this id:   " + newItem.id + "  exists");
             }
         }
         Ticket[] tmp = new Ticket[tickets.length + 1];
