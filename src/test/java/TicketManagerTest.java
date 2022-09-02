@@ -14,7 +14,7 @@ public class TicketManagerTest {
     Ticket ticket5 = new Ticket(5, 1100, "AEF", "FRT", 125);
     Ticket ticket6 = new Ticket(6, 1200, "UYI", "WER", 125);
     Ticket ticket7 = new Ticket(7, 1020, "AEF", "WER", 125);
-    Ticket ticket8 = new Ticket(8, 1400, "UYI", "WER", 125);
+    Ticket ticket8 = new Ticket(8, 1400, "UYU", "WER", 125);
     Ticket ticket9 = new Ticket(9, 1, "AEF", "WER", 125);
 
     @BeforeEach
@@ -42,6 +42,24 @@ public class TicketManagerTest {
     void shouldFindAll() {
         Ticket[] expected = {ticket9, ticket2, ticket1, ticket3, ticket7};
         Ticket[] actual = manager.findAll("AEF", "WER");
+        Assertions.assertArrayEquals(expected, actual);
+    }
+    @Test
+    void shouldFindOne() {
+        Ticket[] expected = {ticket8};
+        Ticket[] actual = manager.findAll("UYU", "WER");
+        Assertions.assertArrayEquals(expected, actual);
+    }
+    @Test
+    void shouldFindTwo() {
+        Ticket[] expected = {ticket4, ticket5};
+        Ticket[] actual = manager.findAll("AEF", "FRT");
+        Assertions.assertArrayEquals(expected, actual);
+    }
+    @Test
+    void shouldFindZero() {
+        Ticket[] expected = {};
+        Ticket[] actual = manager.findAll("OPF", "FRT");
         Assertions.assertArrayEquals(expected, actual);
     }
 }
